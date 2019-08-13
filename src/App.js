@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Clarifai from 'clarifai';
 import Navigation from './components/Navigation/Navigation';
 import Signin from './components/Signin/Signin';
-import Regisiter from './components/Regisiter/Regisiter';
+import Register from './components/Regisiter/Regisiter';
 import Logo from './components/Logo/Logo';
 import Rank from './components/Rank/Rank';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
@@ -142,7 +142,7 @@ class App extends Component {
 			    : 	(
 			    	route === 'signin'
 			    	? <Signin loadUser = {this.loadUser}  onRouteChange={this.onRouteChange} />
-			    	: <Regisiter loadUser = {this.loadUser} onRouteChange={this.onRouteChange} />
+			    	: <Register loadUser = {this.loadUser} onRouteChange={this.onRouteChange} />
 		      		)
 		    	}
 		    </div>

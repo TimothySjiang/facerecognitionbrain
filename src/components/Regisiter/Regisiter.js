@@ -1,40 +1,40 @@
 import React, {Component} from 'react';
 
-class Regisiter extends Component{
+class Register extends Component{
 	constructor(props){
 		super();
 		this.state = {
-			regisiterName:'',
-			regisiterEmail:'',
-			regisiterPassword:'',
+			registerName:'',
+			registerEmail:'',
+			registerPassword:'',
 		}
 	}
 
 	onNameChange = (event) => {
-		this.setState({regisiterName: event.target.value})
+		this.setState({registerName: event.target.value})
 	}
 
 	onEmailChange = (event) => {
-		this.setState({regisiterEmail: event.target.value})
+		this.setState({registerEmail: event.target.value})
 	}
 
 	onPasswordChange = (event) => {
-		this.setState({regisiterPassword: event.target.value})
+		this.setState({registerPassword: event.target.value})
 	}
 
-	onSubmitRegisiter = () => {
-		fetch('http://localhost:3000/regisiter',{
+	onSubmitRegister = () => {
+		fetch('http://localhost:3000/register',{
 					method:'post',
 					headers:{'Content-Type':"application/json"},
 					body: JSON.stringify({
-						name : this.state.regisiterName,
-						email: this.state.regisiterEmail,
-						password: this.regisiterPassword,
+						name : this.state.registerName,
+						email: this.state.registerEmail,
+						password: this.state.registerPassword,
 					})
 				})
 				.then(response => response.json())
 				.then(user => {
-					if (user){
+					if (user !== 'unable to register'){
 						this.props.loadUser(user);
 						this.props.onRouteChange('home');
 					}
@@ -47,7 +47,7 @@ class Regisiter extends Component{
 				<main className="pa4 black-80">
 				  <div className="measure">
 				    <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-				      <legend className="f1 fw6 ph0 mh0">Regisiter</legend>
+				      <legend className="f1 fw6 ph0 mh0">register</legend>
 				      <div className="mt3">
 				        <label className="db fw6 lh-copy f6" htmlFor="Name">Name</label>
 				        <input 
@@ -82,10 +82,10 @@ class Regisiter extends Component{
 				    </fieldset>
 				    <div className="">
 				      <input 
-				      	  onClick= {this.onSubmitRegisiter}
+				      	  onClick= {this.onSubmitRegister}
 					      className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
 					      type="submit" 
-					      value="Regisiter" 
+					      value="Register" 
 					    />
 				    </div>
 				  </div>
@@ -95,4 +95,4 @@ class Regisiter extends Component{
 	}
 }
 
-export default Regisiter;
+export default Register;
